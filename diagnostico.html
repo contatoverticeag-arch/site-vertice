@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diagnóstico Vértice: 6 perguntas para transformar seu evento B2B em uma estratégia de negócio.">
+  <title>Diagnóstico — Vértice Inteligência & Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .diag-hero {
+      padding: 92px 0 42px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diag-hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .diag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 8px 15px;
+      border: 1px solid var(--border-neon);
+      border-radius: 999px;
+      background: var(--neon-dim);
+      color: var(--neon);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .diag-title {
+      max-width: 850px;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+
+    .diag-title span {
+      color: var(--neon);
+      text-shadow: var(--neon-glow);
+    }
+
+    .diag-copy {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .diag-panel {
+      padding: 26px;
+      background:
+        linear-gradient(135deg, rgba(202, 255, 60, 0.08), transparent 65%),
+        var(--bg-card);
+      border: 1px solid var(--border-neon);
+      border-radius: var(--radius-lg);
+    }
+
+    .diag-panel h2 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .diag-panel p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .diag-panel__steps {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .diag-panel__step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .diag-panel__step strong {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      border-radius: 50%;
+      background: var(--neon);
+      color: #0d0d0d;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .diag-panel__step span {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1.55;
+    }
+
+    .diag-section {
+      padding: 58px 0 96px;
+    }
+
+    .diag-shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .wizard-wrap {
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+    }
+
+    .wizard-progress {
+      height: 4px;
+      background: var(--border);
+    }
+
+    .wizard-progress-fill {
+      width: 16.666%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon), #fff);
+      box-shadow: var(--neon-glow);
+      transition: width 420ms ease;
+    }
+
+    .wizard-body {
+      padding: 36px;
+    }
+
+    .step {
+      display: none;
+      animation: fadeStep 360ms ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadeStep {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .step-count {
+      margin-bottom: 10px;
+      color: var(--neon);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .step-question {
+      max-width: 760px;
+      margin: 0 0 28px;
+      font-size: clamp(22px, 3.4vw, 34px);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1.16;
+    }
+
+    .step-question span {
+      color: var(--neon);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .opt-btn {
+      min-height: 142px;
+      padding: 19px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-2);
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: background var(--tr), border-color var(--tr), transform var(--tr);
+    }
+
+    .opt-btn:hover {
+      border-color: var(--border-neon);
+      background: var(--neon-dim);
+      transform: translateY(-2px);
+    }
+
+    .opt-btn.selected {
+      border-color: var(--neon);
+      background: var(--neon-dim);
+      box-shadow: inset 0 0 0 1px rgba(202, 255, 60, 0.12);
+    }
+
+    .opt-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      margin-bottom: 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--neon);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.5px;
+    }
+
+    .opt-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .opt-desc {
+      display: block;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .step-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .step-dots {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-strong);
+      transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
+    }
+
+    .step-dot.done,
+    .step-dot.current {
+      background: var(--neon);
+    }
+
+    .step-dot.current {
+      transform: scale(1.35);
+      box-shadow: var(--neon-glow);
+    }
+
+    .btn-back,
+    .btn-next {
+      min-height: 44px;
+      padding: 12px 23px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 850;
+      cursor: pointer;
+      transition: background var(--tr), border-color var(--tr), color var(--tr), transform var(--tr), box-shadow var(--tr);
+    }
+
+    .btn-back {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .btn-back:hover {
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .btn-next {
+      background: var(--neon);
+      color: #0d0d0d;
+    }
+
+    .btn-next:hover {
+      background: #fff;
+      box-shadow: var(--neon-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-next:disabled {
+      background: var(--text-dim);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result-panel {
+      display: none;
+      padding: 0;
+    }
+
+    .result-panel.show {
+      display: block;
+      animation: fadeStep 420ms ease;
+    }
+
+    .result-loading,
+    .result-error {
+      padding: 54px 28px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+      border: 3px solid var(--border);
+      border-top-color: var(--neon);
+      border-radius: 50%;
+      animation: spin 850ms linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .result-loading p,
+    .result-error p {
+      max-width: 560px;
+      margin: 0 auto 8px;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .result-loading small,
+    .result-error small {
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    .loading-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--neon);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .result-error {
+      display: none;
+    }
+
+    .result-error.show {
+      display: block;
+    }
+
+    .result-error__icon {
+      margin-bottom: 10px;
+      color: var(--neon);
+      font-size: 34px;
+      font-weight: 950;
+    }
+
+    .result-content {
+      display: none;
+    }
+
+    .result-content.show {
+      display: block;
+    }
+
+    .result-hero {
+      padding: 30px 36px 26px;
+      background: linear-gradient(135deg, rgba(202, 255, 60, 0.08), transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .result-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid var(--border-neon);
+      border-radius: 999px;
+      background: var(--neon-dim);
+      color: var(--neon);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .result-tag.green {
+      border-color: rgba(82, 214, 138, 0.24);
+      background: rgba(82, 214, 138, 0.09);
+      color: var(--success);
+    }
+
+    .result-hero h2 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 3.6vw, 34px);
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 1.12;
+    }
+
+    .result-hero p {
+      margin: 0;
+      color: var(--neon);
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.55;
+    }
+
+    .result-body {
+      display: grid;
+      gap: 24px;
+      padding: 30px 36px 36px;
+    }
+
+    .result-block h3 {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .result-block p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .highlight-box {
+      padding: 20px;
+      border: 1px solid var(--border-neon);
+      border-radius: var(--radius);
+      background: var(--neon-dim);
+    }
+
+    .highlight-box p {
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .result-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+
+    .result-card__title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .result-card__title span {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--border-neon);
+      border-radius: 50%;
+      color: var(--neon);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .result-card p,
+    .result-card li {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .result-card p {
+      margin: 0 0 10px;
+    }
+
+    .deliverable {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: var(--neon-dim);
+      color: var(--neon);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .result-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .result-list li {
+      position: relative;
+      padding: 11px 12px 11px 34px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-card);
+    }
+
+    .result-list li::before {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: 14px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: var(--neon-glow);
+    }
+
+    .result-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .risk-box {
+      border-color: rgba(255, 112, 112, 0.25);
+      background: rgba(255, 112, 112, 0.06);
+    }
+
+    .risk-box h3 {
+      color: var(--danger);
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .restart-btn {
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .restart-btn:hover {
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 980px) {
+      .diag-hero__grid,
+      .result-grid,
+      .result-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .diag-hero {
+        padding-top: 72px;
+      }
+
+      .wizard-body,
+      .result-hero,
+      .result-body {
+        padding-inline: 20px;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .step-dots {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div data-component="header"></div>
+
+  <main class="page-shell">
+    <section class="diag-hero">
+      <div class="container diag-hero__grid">
+        <div>
+          <div class="diag-badge reveal"><span class="pulse-dot"></span> Diagnóstico gratuito</div>
+          <h1 class="diag-title reveal d1">Seu evento merece uma <span>estratégia real.</span></h1>
+          <p class="diag-copy reveal d2">
+            Em poucos minutos, você transforma uma ideia solta de evento em um primeiro mapa estratégico: objetivo, público, formato, riscos, KPIs e frentes de atuação.
+          </p>
+        </div>
+
+        <aside class="diag-panel reveal d3">
+          <h2>Como funciona</h2>
+          <p>Imagine uma consulta rápida. Você responde o essencial. A Vértice organiza o raciocínio e entrega uma leitura mais estratégica do projeto.</p>
+          <div class="diag-panel__steps">
+            <div class="diag-panel__step"><strong>1</strong><span>Você responde 6 perguntas sobre o evento.</span></div>
+            <div class="diag-panel__step"><strong>2</strong><span>A análise cruza objetivo, público, escala e prazo.</span></div>
+            <div class="diag-panel__step"><strong>3</strong><span>O resultado vira um caminho claro para briefing e orçamento.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="diag-section">
+      <div class="container">
+        <div class="diag-shell">
+          <div class="wizard-wrap reveal">
+            <div class="wizard-progress">
+              <div class="wizard-progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="wizard-body" id="wizardSteps">
+              <div class="step active" data-step="1">
+                <div class="step-count">Pergunta 1 de 6</div>
+                <h2 class="step-question">Qual o <span>resultado de negócio</span> que esse evento precisa gerar?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="gerar pipeline e novas oportunidades comerciais mensuráveis"><span class="opt-icon">ROI</span><span class="opt-label">Gerar pipeline</span><span class="opt-desc">Criar e qualificar oportunidades comerciais com clientes e prospects.</span></button>
+                  <button class="opt-btn" data-val="retenção e fortalecimento de clientes estratégicos existentes"><span class="opt-icon">LTV</span><span class="opt-label">Reter clientes estratégicos</span><span class="opt-desc">Aprofundar vínculos, reduzir churn e aumentar lifetime value.</span></button>
+                  <button class="opt-btn" data-val="lançamento e posicionamento de produto ou serviço no mercado"><span class="opt-icon">GTM</span><span class="opt-label">Lançar produto ou marca</span><span class="opt-desc">Apresentar novidade com awareness, demanda e posicionamento.</span></button>
+                  <button class="opt-btn" data-val="capacitação técnica e educação do público com geração de autoridade"><span class="opt-icon">EDU</span><span class="opt-label">Capacitar e gerar autoridade</span><span class="opt-desc">Educar o mercado e posicionar a empresa como referência.</span></button>
+                </div>
+                <div class="step-nav">
+                  <span></span>
+                  <div class="step-dots" data-dots="1"></div>
+                  <button class="btn-next" id="next1" disabled type="button" onclick="nextStep(1)">Próximo</button>
+                </div>
+              </div>
+
+              <div class="step" data-step="2">
+                <div class="step-count">Pergunta 2 de 6</div>
+                <h2 class="step-question">Quem são as <span>pessoas que precisam ser impactadas</span>?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="executivos C-Level e diretores, tomadores de decisão estratégica e orçamentária"><span class="opt-icon">C</span><span class="opt-label">C-Level e diretores</span><span class="opt-desc">Quem aprova orçamento, estratégia e movimentos relevantes.</span></button>
+                  <button class="opt-btn" data-val="gerentes, coordenadores e técnicos, influenciadores da decisão no dia a dia"><span class="opt-icon">OPS</span><span class="opt-label">Gerentes e técnicos</span><span class="opt-desc">Quem opera, recomenda e implementa as soluções.</span></button>
+                  <button class="opt-btn" data-val="produtores rurais, cooperativas, distribuidores e técnicos do agronegócio"><span class="opt-icon">AG</span><span class="opt-label">Público do agronegócio</span><span class="opt-desc">Produtores, cooperados, distribuidores e consultores do campo.</span></button>
+                  <button class="opt-btn" data-val="mix estratégico de múltiplos perfis de público com senioridades diferentes"><span class="opt-icon">MIX</span><span class="opt-label">Público misto</span><span class="opt-desc">Diferentes perfis e cargos no mesmo evento, exigindo segmentação.</span></button>
+                </div>
+                <div class="step-nav">
+                  <button class="btn-back" type="button" onclick="prevStep(2)">Voltar</button>
+                  <div class="step-dots" data-dots="2"></div>
+                  <button class="btn-next" id="next2" disabled type="button" onclick="nextStep(2)">Próximo</button>
+                </div>
+              </div>
+
+              <div class="step" data-step="3">
+                <div class="step-count">Pergunta 3 de 6</div>
+                <h2 class="step-question">Qual o <span>formato e duração</span> do evento?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="evento presencial de 1 dia, alta intensidade, foco em imersão e decisão"><span class="opt-icon">1D</span><span class="opt-label">1 dia presencial</span><span class="opt-desc">Imersão intensa, decisões rápidas e alto impacto por hora.</span></button>
+                  <button class="opt-btn" data-val="evento presencial de 2 a 3 dias, convivência profunda, networking e conteúdo denso"><span class="opt-icon">3D</span><span class="opt-label">2 a 3 dias presencial</span><span class="opt-desc">Convivência, aprofundamento e dinâmicas de relacionamento.</span></button>
+                  <button class="opt-btn" data-val="evento híbrido ou online, alcance ampliado com participação presencial âncora"><span class="opt-icon">ON</span><span class="opt-label">Híbrido ou online</span><span class="opt-desc">Presença física e digital para ampliar alcance geográfico.</span></button>
+                  <button class="opt-btn" data-val="visita técnica, field trip ou dia de campo, experiência in loco no ambiente do cliente"><span class="opt-icon">FT</span><span class="opt-label">Field trip ou dia de campo</span><span class="opt-desc">Vivência real, demonstração prática e alta memorabilidade.</span></button>
+                </div>
+                <div class="step-nav">
+                  <button class="btn-back" type="button" onclick="prevStep(3)">Voltar</button>
+                  <div class="step-dots" data-dots="3"></div>
+                  <button class="btn-next" id="next3" disabled type="button" onclick="nextStep(3)">Próximo</button>
+                </div>
+              </div>
+
+              <div class="step" data-step="4">
+                <div class="step-count">Pergunta 4 de 6</div>
+                <h2 class="step-question">Quantas <span>pessoas</span> você quer impactar?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="até 40 pessoas, evento exclusivo de alta curadoria e profundidade"><span class="opt-icon">40</span><span class="opt-label">Até 40 pessoas</span><span class="opt-desc">Máxima exclusividade e público escolhido a dedo.</span></button>
+                  <button class="opt-btn" data-val="40 a 150 pessoas, escala com personalização e equilíbrio entre impacto e profundidade"><span class="opt-icon">150</span><span class="opt-label">40 a 150 pessoas</span><span class="opt-desc">Alcance significativo sem perder qualidade individual.</span></button>
+                  <button class="opt-btn" data-val="150 a 400 pessoas, evento de grande impacto, produção robusta e múltiplas trilhas"><span class="opt-icon">400</span><span class="opt-label">150 a 400 pessoas</span><span class="opt-desc">Evento corporativo robusto com trilhas e ativações simultâneas.</span></button>
+                  <button class="opt-btn" data-val="mais de 400 pessoas, mega evento com alta visibilidade e complexidade operacional elevada"><span class="opt-icon">400+</span><span class="opt-label">Mais de 400 pessoas</span><span class="opt-desc">Congresso, convenção ou evento de setor com alta complexidade.</span></button>
+                </div>
+                <div class="step-nav">
+                  <button class="btn-back" type="button" onclick="prevStep(4)">Voltar</button>
+                  <div class="step-dots" data-dots="4"></div>
+                  <button class="btn-next" id="next4" disabled type="button" onclick="nextStep(4)">Próximo</button>
+                </div>
+              </div>
+
+              <div class="step" data-step="5">
+                <div class="step-count">Pergunta 5 de 6</div>
+                <h2 class="step-question">Vocês já têm <span>tema e narrativa</span> definidos?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="sim, já temos tema, identidade visual e narrativa central definidos"><span class="opt-icon">OK</span><span class="opt-label">Sim, tema definido</span><span class="opt-desc">Já existe nome, conceito e identidade, falta estratégia e execução.</span></button>
+                  <button class="opt-btn" data-val="temos uma direção geral mas sem tema ou narrativa estruturada"><span class="opt-icon">DIR</span><span class="opt-label">Direção, sem tema</span><span class="opt-desc">Existe intenção, mas ainda não há conceito criativo amarrado.</span></button>
+                  <button class="opt-btn" data-val="evento recorrente com histórico, precisamos renovar o conceito e manter relevância"><span class="opt-icon">REP</span><span class="opt-label">Evento recorrente</span><span class="opt-desc">Já aconteceu antes e precisa evoluir sem perder o que funciona.</span></button>
+                  <button class="opt-btn" data-val="primeira vez realizando esse tipo de evento, partindo do zero em tudo"><span class="opt-icon">NEW</span><span class="opt-label">Primeira edição</span><span class="opt-desc">Ainda sem histórico, com oportunidade de construir do jeito certo.</span></button>
+                </div>
+                <div class="step-nav">
+                  <button class="btn-back" type="button" onclick="prevStep(5)">Voltar</button>
+                  <div class="step-dots" data-dots="5"></div>
+                  <button class="btn-next" id="next5" disabled type="button" onclick="nextStep(5)">Próximo</button>
+                </div>
+              </div>
+
+              <div class="step" data-step="6">
+                <div class="step-count">Pergunta 6 de 6</div>
+                <h2 class="step-question">Qual o <span>prazo</span> que você tem?</h2>
+                <div class="options-grid">
+                  <button class="opt-btn" data-val="menos de 45 dias, modo emergência e execução imediata com o que é possível"><span class="opt-icon">45-</span><span class="opt-label">Menos de 45 dias</span><span class="opt-desc">Urgente, priorizando o essencial para garantir entrega com qualidade.</span></button>
+                  <button class="opt-btn" data-val="45 a 90 dias, prazo apertado mas viável com processo acelerado"><span class="opt-icon">90</span><span class="opt-label">45 a 90 dias</span><span class="opt-desc">Pressionado, mas com espaço para estrutura e método.</span></button>
+                  <button class="opt-btn" data-val="3 a 6 meses, prazo confortável para planejamento estratégico completo"><span class="opt-icon">6M</span><span class="opt-label">3 a 6 meses</span><span class="opt-desc">Tempo para executar as fases com mais profundidade.</span></button>
+                  <button class="opt-btn" data-val="mais de 6 meses ou fase de planejamento inicial, oportunidade de começar do jeito certo"><span class="opt-icon">6M+</span><span class="opt-label">Mais de 6 meses</span><span class="opt-desc">Condição ideal para construir briefing, narrativa e herança D+90.</span></button>
+                </div>
+                <div class="step-nav">
+                  <button class="btn-back" type="button" onclick="prevStep(6)">Voltar</button>
+                  <div class="step-dots" data-dots="6"></div>
+                  <button class="btn-next" id="next6" disabled type="button" onclick="submitDiagnostic()">Gerar diagnóstico</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-panel" id="resultPanel">
+              <div class="result-loading" id="resultLoading">
+                <div class="spinner"></div>
+                <p>Construindo sua análise estratégica personalizada...</p>
+                <small>Metodologia Vértice aplicada ao seu contexto.</small>
+                <div class="loading-note"><span class="pulse-dot"></span><span id="loadingMsg">Lendo seu cenário...</span></div>
+              </div>
+
+              <div class="result-error" id="resultError">
+                <div class="result-error__icon">VT</div>
+                <p id="resultErrorText">A análise avançada ainda não está configurada. Mesmo assim, seu briefing já está organizado para virar uma conversa objetiva.</p>
+                <a class="btn btn-primary" id="fallbackWhatsapp" target="_blank" rel="noopener" href="https://wa.me/5542998417890">Enviar briefing no WhatsApp</a>
+                <button class="restart-btn" type="button" onclick="restartWizard()" style="display:block;margin:18px auto 0;">Refazer diagnóstico</button>
+                <small>Modo de análise avançada ainda não configurado neste navegador.</small>
+              </div>
+
+              <div class="result-content" id="resultContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"></div>
+  <script src="components.js"></script>
+  <script>
+    "use strict";
+
+    const TOTAL_STEPS = 6;
+    const answers = {};
+    let currentStep = 1;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderDots();
+      setupOptions();
+      updateProgress();
+    });
+
+    function setupOptions() {
+      document.querySelectorAll(".opt-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const step = button.closest(".step");
+          const stepNum = Number(step.dataset.step);
+          step.querySelectorAll(".opt-btn").forEach((item) => item.classList.remove("selected"));
+          button.classList.add("selected");
+          answers[stepNum] = button.dataset.val;
+          document.getElementById(`next${stepNum}`).disabled = false;
+        });
+      });
+    }
+
+    function renderDots() {
+      document.querySelectorAll("[data-dots]").forEach((wrap) => {
+        const step = Number(wrap.dataset.dots);
+        wrap.innerHTML = Array.from({ length: TOTAL_STEPS }, (_, index) => {
+          const number = index + 1;
+          const cls = number < step ? "done" : number === step ? "current" : "";
+          return `<span class="step-dot ${cls}"></span>`;
+        }).join("");
+      });
+    }
+
+    function updateProgress() {
+      document.getElementById("progressFill").style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
+    }
+
+    function showStep(step) {
+      document.querySelectorAll(".step").forEach((item) => item.classList.toggle("active", Number(item.dataset.step) === step));
+      currentStep = step;
+      updateProgress();
+      document.querySelector(".wizard-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function nextStep(step) {
+      if (!answers[step]) return;
+      showStep(step + 1);
+    }
+
+    function prevStep(step) {
+      showStep(step - 1);
+    }
+
+    async function submitDiagnostic() {
+      if (!answers[6]) return;
+
+      document.getElementById("wizardSteps").style.display = "none";
+      document.getElementById("resultPanel").classList.add("show");
+      document.getElementById("resultLoading").style.display = "block";
+      document.getElementById("resultError").classList.remove("show");
+      document.getElementById("resultContent").classList.remove("show");
+      document.getElementById("resultContent").innerHTML = "";
+
+      const whatsappMessage = buildWhatsappMessage();
+      document.getElementById("fallbackWhatsapp").href = `${window.Vertice?.whatsappUrl || "https://wa.me/5542998417890"}?text=${encodeURIComponent(whatsappMessage)}`;
+      document.getElementById("loadingMsg").textContent = "Lendo sinais de mercado do dia...";
+      const marketContext = await loadDiagnosticMarketContext();
+
+      const messages = [
+        "Lendo seu cenário de evento...",
+        "Cruzando objetivo, público e escala...",
+        "Mapeando riscos comerciais...",
+        "Aplicando a metodologia Vértice...",
+        "Desenhando frentes de atuação...",
+        "Finalizando próximos passos..."
+      ];
+
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < messages.length) document.getElementById("loadingMsg").textContent = messages[index++];
+      }, 760);
+
+      try {
+        const response = await fetch("/.netlify/functions/groq", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            prompt: buildPrompt(marketContext),
+            max_tokens: 1000,
+            temperature: 0.68,
+            json: true
+          })
+        });
+
+        clearInterval(interval);
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}));
+          throw new Error(error.error?.message || "Não foi possível gerar a análise agora.");
+        }
+
+        const data = await response.json();
+        let raw = String(data.content || "").trim();
+        if (!raw) throw new Error("Resposta vazia da análise avançada.");
+        renderResult(parseJsonPayload(raw));
+      } catch (error) {
+        clearInterval(interval);
+        document.getElementById("resultLoading").style.display = "none";
+        renderLocalDiagnostic(marketContext);
+      }
+    }
+
+    async function loadDiagnosticMarketContext() {
+      const market = {
+        available: false,
+        date: new Date().toLocaleDateString("pt-BR"),
+        usd: null,
+        usdPct: null,
+        soja: null,
+        sojaPct: null,
+        milho: null,
+        milhoPct: null,
+        sources: []
+      };
+
+      try {
+        const snapshotResponse = await fetch("/.netlify/functions/market", { signal: AbortSignal.timeout(9000) });
+        if (snapshotResponse.ok) {
+          const snapshot = await snapshotResponse.json();
+          const usd = snapshot.currencies?.usd;
+          const soja = snapshot.commodities?.soja;
+          const milho = snapshot.commodities?.milho;
+
+          if (usd?.brl) {
+            market.usd = usd.brl;
+            market.usdPct = usd.pct || 0;
+            market.available = true;
+            market.sources.push("câmbio: AwesomeAPI");
+          }
+
+          if (soja?.brlPerBag) {
+            market.soja = soja.brlPerBag;
+            market.sojaPct = soja.pct || 0;
+            market.available = true;
+            market.sources.push("soja: Yahoo Finance/CBOT");
+          }
+
+          if (milho?.brlPerBag) {
+            market.milho = milho.brlPerBag;
+            market.milhoPct = milho.pct || 0;
+            market.available = true;
+            market.sources.push("milho: Yahoo Finance/CBOT");
+          }
+
+          if (market.available) return market;
+        }
+      } catch {
+        // Se a funcao de mercado nao responder, tenta as fontes publicas como apoio.
+      }
+
+      try {
+        const fxResponse = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL", { signal: AbortSignal.timeout(5000) });
+        if (fxResponse.ok) {
+          const fx = await fxResponse.json();
+          market.usd = Number.parseFloat(fx.USDBRL?.bid);
+          market.usdPct = Number.parseFloat(fx.USDBRL?.pctChange);
+          market.available = Number.isFinite(market.usd);
+          if (market.available) market.sources.push("câmbio: AwesomeAPI");
+        }
+      } catch {
+        // Mercado segue opcional: o diagnóstico não pode quebrar se a API cair.
+      }
+
+      const commodities = [
+        { key: "soja", symbol: "ZS=F" },
+        { key: "milho", symbol: "ZC=F" }
+      ];
+
+      await Promise.allSettled(commodities.map(async ({ key, symbol }) => {
+        try {
+          const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=2d`;
+          const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+          const response = await fetch(proxy, { signal: AbortSignal.timeout(6500) });
+          if (!response.ok) return;
+          const wrapper = await response.json();
+          const data = JSON.parse(wrapper.contents);
+          const meta = data?.chart?.result?.[0]?.meta;
+          if (!meta?.regularMarketPrice) return;
+          const price = meta.regularMarketPrice;
+          const previous = meta.previousClose;
+          const pct = previous ? ((price - previous) / previous) * 100 : 0;
+          const usd = market.usd || 5.7;
+          const brlPerBag = ((price * usd) / 100) * (60 / 27.2);
+          market[key] = brlPerBag;
+          market[`${key}Pct`] = pct;
+          market.available = true;
+          market.sources.push(`${key}: Yahoo Finance/CBOT via AllOrigins`);
+        } catch {
+          // Mantém silencioso para não interromper a conversão.
+        }
+      }));
+
+      return market;
+    }
+
+    function marketSummary(market) {
+      if (!market?.available) return "Dados de mercado indisponíveis no momento da análise.";
+      const parts = [];
+      if (Number.isFinite(market.usd)) parts.push(`Dólar em R$${market.usd.toFixed(2)} (${formatSignedPct(market.usdPct)})`);
+      if (Number.isFinite(market.soja)) parts.push(`soja estimada em R$${market.soja.toFixed(0)}/sc (${formatSignedPct(market.sojaPct)})`);
+      if (Number.isFinite(market.milho)) parts.push(`milho estimado em R$${market.milho.toFixed(0)}/sc (${formatSignedPct(market.milhoPct)})`);
+      const sources = market.sources?.length ? ` Fontes: ${[...new Set(market.sources)].join("; ")}.` : "";
+      return parts.length ? `${parts.join("; ")}.${sources}` : "Dados de mercado parcialmente indisponíveis.";
+    }
+
+    function formatSignedPct(value) {
+      const number = Number.isFinite(value) ? value : 0;
+      return `${number > 0 ? "+" : ""}${number.toFixed(2)}%`;
+    }
+
+    function buildPrompt(marketContext) {
+      return `Você é Guilherme Almeida, fundador da Vértice Engenharia de Experiências, especialista em eventos B2B com metodologia em 6 fases: Qualificação, Diagnóstico Integrado, Conceito & Narrativa, Engenharia de Conteúdo, Execução Operacional e Herança & KPIs.
+
+BRIEFING:
+- Resultado esperado: ${answers[1]}
+- Público-alvo: ${answers[2]}
+- Formato e duração: ${answers[3]}
+- Escala: ${answers[4]}
+- Maturidade criativa: ${answers[5]}
+- Prazo disponível: ${answers[6]}
+
+SINAIS DE MERCADO DO DIA, APENAS COMO CONTEXTO:
+${marketSummary(marketContext)}
+
+Gere um diagnóstico estratégico que mostre entendimento real do cenário e vontade de avançar para orçamento.
+O centro da análise deve ser técnico: objetivo comercial, público, narrativa, jornada, risco operacional, régua D+90 e KPIs.
+Use os sinais de mercado em uma seção específica, mas não dependa deles para a qualidade do diagnóstico. Não force conclusões financeiras; conecte os dados apenas a timing, humor do cliente, pauta de conteúdo, relacionamento e prioridade comercial.
+Se algum dado estiver indisponível ou parecer instável, diga isso com elegância e entregue uma leitura estratégica mesmo assim.
+O tom deve ser provocativo, premium e consultivo, como uma primeira reunião com um especialista experiente.
+
+Responda SOMENTE com JSON válido:
+{
+  "titulo": "nome do diagnóstico em até 10 palavras",
+  "subtitulo": "1 frase com o maior desafio ou oportunidade",
+  "diagnostico_geral": "parágrafo de 4-5 linhas, específico ao briefing",
+  "sinal_mercado": {
+    "titulo": "título curto da leitura de mercado aplicada",
+    "texto": "2-3 linhas conectando os dados do dia ao cenário escolhido pelo cliente",
+    "implicacao": "1 ação ou cuidado para o evento considerando esse cenário"
+  },
+  "potencial_oculto": "insight que o cliente provavelmente não está vendo",
+  "frentes": [
+    {"codigo":"01","nome":"frente de atuação","descricao":"2 linhas específicas","entregavel":"entregável concreto"},
+    {"codigo":"02","nome":"frente de atuação","descricao":"2 linhas específicas","entregavel":"entregável concreto"},
+    {"codigo":"03","nome":"frente de atuação","descricao":"2 linhas específicas","entregavel":"entregável concreto"},
+    {"codigo":"04","nome":"frente de atuação","descricao":"2 linhas específicas","entregavel":"entregável concreto"}
+  ],
+  "kpis_propostos": ["KPI 1 com meta", "KPI 2 com meta", "KPI 3 com meta"],
+  "alerta_principal": "maior risco se o evento for feito sem metodologia",
+  "promessa": "promessa Vértice para esse projeto em 2 linhas",
+  "fase_entrada": "fase recomendada e justificativa",
+  "proximos_passos": ["passo 1", "passo 2", "passo 3"]
+}`;
+    }
+
+    function parseJsonPayload(raw) {
+      const clean = String(raw || "")
+        .replace(/```json\n?/g, "")
+        .replace(/```\n?/g, "")
+        .trim();
+
+      try {
+        return JSON.parse(clean);
+      } catch {
+        const start = clean.indexOf("{");
+        const end = clean.lastIndexOf("}");
+        if (start >= 0 && end > start) return JSON.parse(clean.slice(start, end + 1));
+        throw new Error("JSON inválido na análise avançada.");
+      }
+    }
+
+    function renderLocalDiagnostic(marketContext = {}) {
+      const profile = buildDiagnosticProfile();
+      const fronts = buildDynamicFronts(profile);
+      const kpis = buildDynamicKpis(profile);
+      const nextSteps = buildDynamicNextSteps(profile);
+
+      const local = {
+        titulo: profile.title,
+        subtitulo: profile.subtitle,
+        diagnostico_geral: buildDynamicAnalysis(profile),
+        sinal_mercado: buildMarketSignal(profile, marketContext),
+        potencial_oculto: profile.hiddenPotential,
+        frentes: fronts,
+        kpis_propostos: kpis,
+        alerta_principal: profile.mainRisk,
+        promessa: profile.promise,
+        fase_entrada: profile.entryPhase,
+        proximos_passos: nextSteps
+      };
+      renderResult(local);
+    }
+
+    function buildMarketSignal(profile, market) {
+      if (!market?.available) {
+        return {
+          titulo: "Leitura estratégica do momento",
+          texto: "Mesmo sem depender de cotação ao vivo, o cenário para eventos B2B é claro: o decisor está mais seletivo, compara melhor o uso do tempo e cobra utilidade antes de aceitar um convite.",
+          implicacao: "A pauta precisa provar valor logo no convite: qual decisão o participante vai conseguir tomar melhor depois do evento?"
+        };
+      }
+
+      const usd = Number.isFinite(market.usd) ? `dólar em R$${market.usd.toFixed(2)}` : "câmbio indisponível";
+      const soja = Number.isFinite(market.soja) ? `soja em R$${market.soja.toFixed(0)}/sc` : "soja indisponível";
+      const milho = Number.isFinite(market.milho) ? `milho em R$${market.milho.toFixed(0)}/sc` : "milho indisponível";
+      const dollarTone = Number.isFinite(market.usdPct) && market.usdPct > 0 ? "câmbio pressionado para cima" : "câmbio sem pressão forte de alta";
+      const soyTone = Number.isFinite(market.sojaPct)
+        ? (market.sojaPct < 0 ? "soja em queda" : "soja sustentada")
+        : "commodities sem leitura disponível";
+      const sourceLine = market.sources?.length ? ` Fontes: ${[...new Set(market.sources)].join("; ")}.` : "";
+
+      if (profile.isAgro || profile.isField) {
+        return {
+          titulo: "Leitura agro aplicada ao evento",
+          texto: `Com ${usd}, ${soja} e ${milho}, o público do agro tende a ouvir melhor conversas que ligam tecnologia, margem e decisão prática. Se o encontro for de campo ou técnico, o dado de mercado deve aparecer como contexto da pauta, não como enfeite.${sourceLine}`,
+          implicacao: `Inclua uma abertura curta conectando ${dollarTone} e ${soyTone} ao problema que o evento promete resolver.`
+        };
+      }
+
+      if (profile.isPipeline) {
+        return {
+          titulo: "Mercado como gatilho comercial",
+          texto: `Com ${usd} e ${soja}, o decisor tende a ficar mais seletivo antes de abrir agenda. Para um evento focado em pipeline, isso aumenta a importância de convite consultivo, prova de valor e follow-up rápido.${sourceLine}`,
+          implicacao: "A régua comercial deve usar o contexto de mercado para justificar por que participar agora, não depois."
+        };
+      }
+
+      if (profile.isRetention) {
+        return {
+          titulo: "Mercado como pauta de confiança",
+          texto: `Em um cenário com ${usd}, ${soja} e ${milho}, clientes estratégicos valorizam fornecedores que ajudam a interpretar o momento. Para retenção, o evento pode funcionar como fórum de escuta e orientação.${sourceLine}`,
+          implicacao: "Reserve um bloco para ouvir dores atuais dos clientes e transformar isso em plano D+90."
+        };
+      }
+
+      if (profile.isLaunch) {
+        return {
+          titulo: "Timing de mercado para lançamento",
+          texto: `Com ${usd}, qualquer lançamento precisa deixar claro impacto em eficiência, margem, risco ou produtividade. O mercado do dia ajuda a calibrar a mensagem: menos promessa genérica, mais utilidade concreta.${sourceLine}`,
+          implicacao: "A narrativa do lançamento deve responder qual decisão fica mais fácil para o cliente neste contexto."
+        };
+      }
+
+      return {
+        titulo: "Mercado como contexto de autoridade",
+        texto: `Com ${usd}, ${soja} e ${milho}, o conteúdo ganha força quando traduz cenário em decisão. Para autoridade, o evento precisa ajudar a audiência a interpretar o momento com clareza prática.${sourceLine}`,
+        implicacao: "Abra a experiência com uma leitura de cenário e feche com ações aplicáveis para os participantes."
+      };
+    }
+
+    function buildDiagnosticProfile() {
+      const objective = answers[1] || "";
+      const audience = answers[2] || "";
+      const format = answers[3] || "";
+      const scale = answers[4] || "";
+      const maturity = answers[5] || "";
+      const deadline = answers[6] || "";
+
+      const isPipeline = has(objective, "pipeline", "oportunidades");
+      const isRetention = has(objective, "retenção", "clientes estratégicos", "lifetime");
+      const isLaunch = has(objective, "lançamento", "produto", "marca");
+      const isEducation = has(objective, "capacitação", "educação", "autoridade");
+      const isCLevel = has(audience, "c-level", "diretores");
+      const isTechnical = has(audience, "gerentes", "técnicos", "influenciadores");
+      const isAgro = has(audience, "produtores", "cooperativas", "agronegócio");
+      const isMixed = has(audience, "mix estratégico", "múltiplos");
+      const isOneDay = has(format, "1 dia");
+      const isLong = has(format, "2 a 3 dias");
+      const isHybrid = has(format, "híbrido", "online");
+      const isField = has(format, "field", "campo", "visita técnica");
+      const isSmall = has(scale, "até 40");
+      const isMid = has(scale, "40 a 150");
+      const isLarge = has(scale, "150 a 400");
+      const isMega = has(scale, "mais de 400");
+      const hasTheme = has(maturity, "já temos tema");
+      const needsTheme = has(maturity, "sem tema", "construir do zero");
+      const isRecurring = has(maturity, "recorrente", "histórico");
+      const isFirst = has(maturity, "primeira vez", "primeira edição");
+      const isUrgent = has(deadline, "menos de 45");
+      const isTight = has(deadline, "45 a 90");
+      const isComfortable = has(deadline, "3 a 6 meses");
+      const isPlanning = has(deadline, "mais de 6 meses", "planejamento inicial");
+
+      const objectiveLabel = isPipeline ? "pipeline" : isRetention ? "retenção" : isLaunch ? "lançamento" : "autoridade";
+      const audienceLabel = isCLevel ? "decisores C-Level" : isAgro ? "público agro" : isMixed ? "público misto" : "público técnico";
+      const formatLabel = isField ? "experiência de campo" : isHybrid ? "jornada híbrida" : isLong ? "imersão de vários dias" : "encontro presencial de alta intensidade";
+      const urgencyLabel = isUrgent ? "modo emergência" : isTight ? "processo acelerado" : isComfortable ? "planejamento completo" : "construção estratégica antecipada";
+
+      const titleMap = {
+        pipeline: isSmall ? "Pipeline executivo de alta curadoria" : isLarge || isMega ? "Máquina de pipeline em escala" : "Evento desenhado para gerar pipeline",
+        retenção: isCLevel ? "Experiência para reter contas estratégicas" : "Jornada de relacionamento e retenção",
+        lançamento: hasTheme ? "Lançamento pronto para ganhar tração" : "Lançamento que ainda precisa de narrativa",
+        autoridade: isTechnical || isAgro ? "Autoridade técnica com aplicação prática" : "Evento para construir autoridade real"
+      };
+
+      const subtitleMap = {
+        pipeline: `O desafio é transformar presença qualificada em conversa comercial mensurável, sem deixar o evento virar apenas networking.`,
+        retenção: `O centro do projeto é proteger relacionamento, aumentar confiança e criar próximos passos claros com clientes prioritários.`,
+        lançamento: `O evento precisa fazer o mercado entender a novidade, acreditar no posicionamento e saber qual ação tomar depois.`,
+        autoridade: `A oportunidade é converter conhecimento em preferência: educar o público e posicionar a marca como referência útil.`
+      };
+
+      const hiddenMap = {
+        pipeline: isCLevel
+          ? "O potencial escondido está em tratar cada convidado como uma conta estratégica: antes do evento, a jornada já deve preparar a conversa comercial que acontecerá depois."
+          : "O potencial escondido está em transformar interações do evento em sinais de intenção: perguntas, presença em trilhas, temas de interesse e follow-up comercial.",
+        retenção: "O potencial escondido está em usar o evento como fórum de escuta. Clientes estratégicos não querem só assistir; querem ser ouvidos, comparados e incluídos no futuro da solução.",
+        lançamento: needsTheme
+          ? "O potencial escondido está em criar uma narrativa antes da produção. Sem conceito, o lançamento corre o risco de explicar funcionalidades sem criar desejo ou urgência."
+          : "O potencial escondido está em transformar o tema existente em uma jornada de adoção: do problema do cliente até o motivo concreto para experimentar a novidade.",
+        autoridade: isAgro
+          ? "O potencial escondido está em levar conteúdo técnico para o contexto real do produtor. Autoridade no agro nasce quando a recomendação parece aplicável no campo."
+          : "O potencial escondido está em converter educação em confiança comercial. O público precisa sair sabendo mais e confiando mais em quem conduziu a conversa."
+      };
+
+      const riskMap = {
+        pipeline: isUrgent
+          ? "O maior risco é tentar acelerar tudo e cortar justamente a parte que gera conversão: lista certa, convite certo, pergunta certa e follow-up imediato."
+          : "O maior risco é medir sucesso por sala cheia, mas não por oportunidades criadas, contas priorizadas e avanço real no funil.",
+        retenção: "O maior risco é fazer um evento agradável para clientes importantes, mas sem escuta estruturada, sem plano de continuidade e sem evidência de valor percebido.",
+        lançamento: needsTheme
+          ? "O maior risco é produzir o evento antes de resolver a mensagem. Quando a narrativa nasce tarde, a experiência fica bonita, mas o posicionamento não fixa."
+          : "O maior risco é tratar o lançamento como apresentação, e não como mudança de percepção. O público entende a novidade, mas não sente urgência para agir.",
+        autoridade: "O maior risco é entregar conteúdo demais e decisão de menos. A audiência aprende, mas não entende qual próximo passo faz sentido com a sua marca."
+      };
+
+      const promiseMap = {
+        pipeline: "A Vértice estrutura o evento como um sistema de geração de oportunidades: curadoria, narrativa, experiência e follow-up trabalhando para o mesmo indicador comercial.",
+        retenção: "A Vértice desenha uma experiência para aprofundar confiança, capturar sinais de relacionamento e transformar presença em plano de continuidade com clientes-chave.",
+        lançamento: "A Vértice conecta mensagem, jornada e execução para que o lançamento não seja só anúncio, mas um momento de posicionamento e tração comercial.",
+        autoridade: "A Vértice transforma conhecimento em experiência: conteúdo claro, aplicação prática e relacionamento pós-evento para sustentar autoridade além do palco."
+      };
+
+      const entryPhase = needsTheme || isFirst
+        ? "Conceito & Narrativa: antes de produzir, o projeto precisa encontrar a ideia central que organiza convite, conteúdo e experiência."
+        : isUrgent
+          ? "Qualificação: com prazo curto, a entrada precisa separar o essencial do desejável e proteger a entrega."
+          : isRecurring
+            ? "Diagnóstico Integrado: o histórico precisa ser lido para decidir o que manter, o que abandonar e o que renovar."
+            : "Diagnóstico Integrado: é a fase que conecta objetivo, público, formato, riscos e indicadores antes da execução.";
+
+      return {
+        objective,
+        audience,
+        format,
+        scale,
+        maturity,
+        deadline,
+        isPipeline,
+        isRetention,
+        isLaunch,
+        isEducation,
+        isCLevel,
+        isTechnical,
+        isAgro,
+        isMixed,
+        isOneDay,
+        isLong,
+        isHybrid,
+        isField,
+        isSmall,
+        isMid,
+        isLarge,
+        isMega,
+        hasTheme,
+        needsTheme,
+        isRecurring,
+        isFirst,
+        isUrgent,
+        isTight,
+        isComfortable,
+        isPlanning,
+        objectiveLabel,
+        audienceLabel,
+        formatLabel,
+        urgencyLabel,
+        title: titleMap[objectiveLabel],
+        subtitle: subtitleMap[objectiveLabel],
+        hiddenPotential: hiddenMap[objectiveLabel],
+        mainRisk: riskMap[objectiveLabel],
+        promise: promiseMap[objectiveLabel],
+        entryPhase
+      };
+    }
+
+    function buildDynamicAnalysis(profile) {
+      const scaleRead = profile.isSmall
+        ? "A escala pequena favorece exclusividade, mas exige lista muito bem escolhida e conversas de alto valor."
+        : profile.isMid
+          ? "A escala intermediária permite alcance relevante sem perder personalização, desde que a jornada seja segmentada."
+          : profile.isLarge
+            ? "A escala grande pede governança de conteúdo, operação robusta e mecanismos para não diluir a experiência."
+            : "A escala acima de 400 pessoas transforma o evento em plataforma: trilhas, comunicação e dados precisam operar como sistema.";
+
+      const timingRead = profile.isUrgent
+        ? "Como o prazo é menor que 45 dias, a prioridade é reduzir complexidade, proteger o essencial e evitar ambição que coloque a entrega em risco."
+        : profile.isTight
+          ? "Com 45 a 90 dias, existe espaço para método, mas decisões de conceito, lista e operação precisam acontecer em sequência curta."
+          : profile.isComfortable
+            ? "Com 3 a 6 meses, dá para construir a jornada completa com mais pesquisa, narrativa e régua pós-evento."
+            : "Com mais de 6 meses, a vantagem é começar pelo desenho estratégico e não pela produção, criando mais precisão antes do investimento.";
+
+      const audienceRead = profile.isCLevel
+        ? "Como o público é executivo, a experiência precisa respeitar tempo, objetividade e densidade estratégica."
+        : profile.isAgro
+          ? "Como o público está no agro, a experiência precisa falar a língua da operação, da margem e da decisão prática."
+          : profile.isMixed
+            ? "Como o público é misto, a maior necessidade é segmentar mensagens e criar momentos diferentes para decisores, influenciadores e operação."
+            : "Como o público é técnico e influenciador, a credibilidade nasce da profundidade, da demonstração e da utilidade real do conteúdo.";
+
+      return `Seu projeto busca ${profile.objective}. O formato escolhido é ${profile.formatLabel}, voltado para ${profile.audienceLabel}. ${audienceRead} ${scaleRead} ${timingRead} O ponto central é desenhar o evento como uma jornada de decisão, não como uma agenda de atividades.`;
+    }
+
+    function buildDynamicFronts(profile) {
+      const fronts = [];
+
+      if (profile.isPipeline) {
+        fronts.push({ codigo: "01", nome: "Curadoria comercial", descricao: "Definir quem precisa estar na sala, por qual motivo e com qual próximo passo esperado.", entregavel: "Matriz de contas, decisores e prioridade comercial." });
+      } else if (profile.isRetention) {
+        fronts.push({ codigo: "01", nome: "Mapa de contas estratégicas", descricao: "Separar clientes por valor, risco, influência e oportunidade de expansão.", entregavel: "Mapa de relacionamento e objetivo por conta." });
+      } else if (profile.isLaunch) {
+        fronts.push({ codigo: "01", nome: "Arquitetura de lançamento", descricao: "Conectar problema, novidade, prova e chamada para ação em uma narrativa única.", entregavel: "Mensagem central e roteiro de adoção." });
+      } else {
+        fronts.push({ codigo: "01", nome: "Autoridade aplicada", descricao: "Transformar conhecimento técnico em conteúdo útil, memorável e acionável.", entregavel: "Mapa de temas, dores e aplicações práticas." });
+      }
+
+      if (profile.needsTheme || profile.isFirst || profile.isLaunch) {
+        fronts.push({ codigo: "02", nome: "Conceito e narrativa", descricao: "Criar a ideia central que organiza convite, palco, conteúdo, ambientação e pós-evento.", entregavel: "Nome, promessa narrativa e jornada do participante." });
+      } else if (profile.isRecurring) {
+        fronts.push({ codigo: "02", nome: "Renovação com histórico", descricao: "Preservar o que já funciona e redesenhar os pontos que perderam força ou diferenciação.", entregavel: "Diagnóstico da edição anterior e plano de evolução." });
+      } else {
+        fronts.push({ codigo: "02", nome: "Jornada de experiência", descricao: "Desenhar o percurso do participante antes, durante e depois do encontro.", entregavel: "Mapa de jornada e momentos de decisão." });
+      }
+
+      if (profile.isUrgent) {
+        fronts.push({ codigo: "03", nome: "Operação essencial", descricao: "Reduzir escopo, travar decisões críticas e proteger a entrega em prazo curto.", entregavel: "Plano de execução acelerado e lista de cortes seguros." });
+      } else if (profile.isMega || profile.isLarge || profile.isHybrid) {
+        fronts.push({ codigo: "03", nome: "Governança de produção", descricao: "Organizar trilhas, canais, fornecedores, ensaios e contingências sem perder controle.", entregavel: "Cronograma mestre, matriz de responsabilidades e command center." });
+      } else {
+        fronts.push({ codigo: "03", nome: "Execução sem improviso", descricao: "Transformar conceito em produção com responsabilidades, prazos e contingências claras.", entregavel: "Checklist operacional e plano de qualidade." });
+      }
+
+      if (profile.isPipeline) {
+        fronts.push({ codigo: "04", nome: "Follow-up de pipeline", descricao: "Converter presença em conversa comercial com cadência, dono e mensagem por conta.", entregavel: "Régua D+1, D+7 e D+30 com próximos passos." });
+      } else if (profile.isRetention) {
+        fronts.push({ codigo: "04", nome: "Herança de relacionamento", descricao: "Transformar escuta e convivência em plano de continuidade com clientes prioritários.", entregavel: "Plano D+90 por segmento de cliente." });
+      } else if (profile.isLaunch) {
+        fronts.push({ codigo: "04", nome: "Adoção pós-lançamento", descricao: "Criar continuidade para teste, demonstração, reunião comercial ou comunidade de early adopters.", entregavel: "Régua de ativação e conversão pós-evento." });
+      } else {
+        fronts.push({ codigo: "04", nome: "Comunidade e autoridade", descricao: "Estender o aprendizado para uma cadência de relacionamento e conteúdo depois do evento.", entregavel: "Plano de comunidade, conteúdos e indicadores D+90." });
+      }
+
+      return fronts;
+    }
+
+    function buildDynamicKpis(profile) {
+      if (profile.isPipeline) {
+        return [
+          profile.isCLevel ? "Presença de pelo menos 70% das contas executivas convidadas" : "Taxa de presença qualificada acima de 65%",
+          profile.isSmall ? "Agenda de follow-up individual para 100% dos participantes estratégicos" : "MQLs ou oportunidades registradas para pelo menos 35% dos participantes qualificados",
+          "Primeiro contato comercial realizado em até 72 horas após o evento"
+        ];
+      }
+
+      if (profile.isRetention) {
+        return [
+          "NPS de relacionamento acima de 85 entre clientes estratégicos",
+          "Plano de continuidade definido para 100% das contas prioritárias",
+          "Pelo menos 3 insights acionáveis de cliente transformados em pauta interna"
+        ];
+      }
+
+      if (profile.isLaunch) {
+        return [
+          "Compreensão da proposta de valor acima de 80% na pesquisa pós-evento",
+          "Taxa de demonstração, teste ou reunião solicitada acima de 25%",
+          "Pelo menos 3 objeções de mercado mapeadas e respondidas no follow-up"
+        ];
+      }
+
+      return [
+        "Avaliação de utilidade do conteúdo acima de 85%",
+        "Taxa de participação ativa acima de 45% nas dinâmicas ou perguntas",
+        "Régua de conteúdo pós-evento enviada para 100% dos participantes"
+      ];
+    }
+
+    function buildDynamicNextSteps(profile) {
+      const steps = [];
+
+      if (profile.isUrgent) {
+        steps.push("Fazer uma reunião de corte de escopo para decidir o que é essencial nos próximos 3 dias");
+      } else if (profile.isPlanning) {
+        steps.push("Começar pelo diagnóstico estratégico antes de contratar produção, venue ou fornecedores");
+      } else {
+        steps.push("Validar objetivo de negócio, público prioritário e indicador principal do evento");
+      }
+
+      if (profile.needsTheme || profile.isFirst || profile.isLaunch) {
+        steps.push("Construir o conceito central e a promessa do evento antes de avançar para peças e operação");
+      } else if (profile.isRecurring) {
+        steps.push("Revisar dados e aprendizados da edição anterior para decidir o que renovar");
+      } else {
+        steps.push("Transformar o tema existente em uma jornada com momentos de decisão claros");
+      }
+
+      if (profile.isPipeline) {
+        steps.push("Criar a régua de follow-up comercial antes do evento acontecer");
+      } else if (profile.isRetention) {
+        steps.push("Definir quais clientes estratégicos precisam de plano D+90 depois do encontro");
+      } else if (profile.isLaunch) {
+        steps.push("Definir qual ação o participante deve tomar nas primeiras 72 horas após o lançamento");
+      } else {
+        steps.push("Planejar a continuidade de conteúdo para sustentar autoridade depois do evento");
+      }
+
+      return steps;
+    }
+
+    function has(text, ...needles) {
+      const normalized = normalize(text);
+      return needles.some((needle) => normalized.includes(normalize(needle)));
+    }
+
+    function normalize(text) {
+      return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function renderResult(result) {
+      result = hydrateResult(result);
+      document.getElementById("resultLoading").style.display = "none";
+      const waUrl = `${window.Vertice?.whatsappUrl || "https://wa.me/5542998417890"}?text=${encodeURIComponent(buildWhatsappMessage())}`;
+      const content = document.getElementById("resultContent");
+      content.innerHTML = `
+        <div class="result-hero">
+          <div class="result-tags">
+            <span class="result-tag">Diagnóstico Vértice</span>
+            <span class="result-tag green">${escapeHtml((result.fase_entrada || "Metodologia").split(":")[0])}</span>
+          </div>
+          <h2>${escapeHtml(result.titulo)}</h2>
+          <p>${escapeHtml(result.subtitulo)}</p>
+        </div>
+        <div class="result-body">
+          <div class="result-block">
+            <h3>Análise do cenário</h3>
+            <p>${escapeHtml(result.diagnostico_geral)}</p>
+          </div>
+
+          ${result.sinal_mercado ? `
+          <div class="highlight-box result-block">
+            <h3>${escapeHtml(result.sinal_mercado.titulo || "Leitura de mercado aplicada")}</h3>
+            <p>${escapeHtml(result.sinal_mercado.texto || "")}</p>
+            ${result.sinal_mercado.implicacao ? `<p style="margin-top:12px;color:var(--neon);font-size:13px;font-weight:800;">${escapeHtml(result.sinal_mercado.implicacao)}</p>` : ""}
+          </div>` : ""}
+
+          <div class="highlight-box result-block">
+            <h3>Potencial escondido</h3>
+            <p>${escapeHtml(result.potencial_oculto)}</p>
+          </div>
+
+          <div class="result-block">
+            <h3>Frentes de atuação</h3>
+            <div class="result-grid">
+              ${(result.frentes || []).map((front, index) => `
+                <div class="result-card">
+                  <div class="result-card__title"><span>${escapeHtml(front.codigo || String(index + 1).padStart(2, "0"))}</span>${escapeHtml(front.nome)}</div>
+                  <p>${escapeHtml(front.descricao)}</p>
+                  <strong class="deliverable">${escapeHtml(front.entregavel)}</strong>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="result-split">
+            <div class="result-card">
+              <div class="result-block">
+                <h3>KPIs recomendados</h3>
+                <ul class="result-list">${(result.kpis_propostos || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+              </div>
+            </div>
+            <div class="result-card risk-box">
+              <div class="result-block">
+                <h3>Maior risco</h3>
+                <p>${escapeHtml(result.alerta_principal)}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box result-block">
+            <h3>Promessa Vértice</h3>
+            <p>${escapeHtml(result.promessa)}</p>
+          </div>
+
+          <div class="result-block">
+            <h3>Próximos passos</h3>
+            <ul class="result-list">${(result.proximos_passos || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="${waUrl}" target="_blank" rel="noopener">Quero transformar isso em orçamento</a>
+            <a class="btn btn-ghost" href="vertice.html#metodologia">Ver metodologia completa</a>
+            <button class="restart-btn" type="button" onclick="restartWizard()">Refazer diagnóstico</button>
+          </div>
+        </div>
+      `;
+      content.classList.add("show");
+    }
+
+    function hydrateResult(result = {}) {
+      const profile = buildDiagnosticProfile();
+      const local = {
+        titulo: profile.title,
+        subtitulo: profile.subtitle,
+        diagnostico_geral: buildDynamicAnalysis(profile),
+        sinal_mercado: result.sinal_mercado || buildMarketSignal(profile, {}),
+        potencial_oculto: profile.hiddenPotential,
+        frentes: buildDynamicFronts(profile),
+        kpis_propostos: buildDynamicKpis(profile),
+        alerta_principal: profile.mainRisk,
+        promessa: profile.promise,
+        fase_entrada: profile.entryPhase,
+        proximos_passos: buildDynamicNextSteps(profile)
+      };
+
+      return {
+        ...local,
+        ...result,
+        titulo: usefulText(result.titulo, 8) ? result.titulo : local.titulo,
+        subtitulo: usefulText(result.subtitulo, 30) ? result.subtitulo : local.subtitulo,
+        diagnostico_geral: usefulText(result.diagnostico_geral, 180) ? result.diagnostico_geral : local.diagnostico_geral,
+        sinal_mercado: result.sinal_mercado || local.sinal_mercado,
+        potencial_oculto: usefulText(result.potencial_oculto, 100) ? result.potencial_oculto : local.potencial_oculto,
+        frentes: Array.isArray(result.frentes) && result.frentes.length ? result.frentes : local.frentes,
+        kpis_propostos: Array.isArray(result.kpis_propostos) && result.kpis_propostos.length ? result.kpis_propostos : local.kpis_propostos,
+        alerta_principal: usefulText(result.alerta_principal, 90) ? result.alerta_principal : local.alerta_principal,
+        promessa: usefulText(result.promessa, 90) ? result.promessa : local.promessa,
+        fase_entrada: usefulText(result.fase_entrada, 40) ? result.fase_entrada : local.fase_entrada,
+        proximos_passos: Array.isArray(result.proximos_passos) && result.proximos_passos.length ? result.proximos_passos : local.proximos_passos
+      };
+    }
+
+    function usefulText(value, minLength) {
+      const text = String(value || "").trim();
+      if (text.length < minLength) return false;
+      if (/^(n\/a|nao informado|não informado|sem informação|-)+$/i.test(text)) return false;
+      return true;
+    }
+
+    function buildWhatsappMessage() {
+      return `Olá Guilherme! Fiz o diagnóstico no site da Vértice e quero transformar isso em orçamento.
+
+Meu briefing:
+- Resultado: ${answers[1] || ""}
+- Público: ${answers[2] || ""}
+- Formato: ${answers[3] || ""}
+- Escala: ${answers[4] || ""}
+- Narrativa: ${answers[5] || ""}
+- Prazo: ${answers[6] || ""}`;
+    }
+
+    function restartWizard() {
+      Object.keys(answers).forEach((key) => delete answers[key]);
+      currentStep = 1;
+      document.getElementById("resultPanel").classList.remove("show");
+      document.getElementById("resultError").classList.remove("show");
+      document.getElementById("resultContent").classList.remove("show");
+      document.getElementById("resultContent").innerHTML = "";
+      document.getElementById("wizardSteps").style.display = "block";
+      document.querySelectorAll(".opt-btn").forEach((button) => button.classList.remove("selected"));
+      document.querySelectorAll(".btn-next").forEach((button) => { button.disabled = true; });
+      showStep(1);
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
